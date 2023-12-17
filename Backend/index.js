@@ -8,7 +8,7 @@ import dotenv from 'dotenv'
 const app = express()
 
 
-const url = `mongodb+srv://malikmurfad361:nB92DPE3VGXWB9Zp@cluster0.v4jtwiv.mongodb.net/`
+// const url = `mongodb+srv://malikmurfad361:nB92DPE3VGXWB9Zp@cluster0.v4jtwiv.mongodb.net/`
 
 
 app.use(cors());

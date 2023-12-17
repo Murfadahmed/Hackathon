@@ -8,6 +8,7 @@ import { AddCircleRounded, AssignmentInd, Person } from "@mui/icons-material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import { Button } from "@mui/material";
+import "react-toastify/dist/ReactToastify.css";
 
 const columns = [
   { field: "id", headerName: "ID", width: 220 },
@@ -83,6 +84,19 @@ function Admin() {
     getStudents();
   }, []);
 
+  const AddStudentHandler = () => {
+    toast.success("go to Adding user ", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "colored",
+    });
+    setTimeout(() => navigate("/add-student"), 1500);
+    // navigate("/add-student")
+    // <ToastContainer />
+  };
   const logoutHandler = (e) => {
     e.preventDefault();
     // Logout(dispatch);
@@ -118,19 +132,19 @@ function Admin() {
               </ul>
             </div>
             <button
-            onClick={logoutHandler}
-                style={{
-                  padding: "10px 45px",
-                  marginTop:'15px',
-                  background: "#5C92F7",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "10px",
-                  cursor: "pointer",
-                }}
-              >
-                Logout
-              </button>
+              onClick={logoutHandler}
+              style={{
+                padding: "10px 45px",
+                marginTop: "15px",
+                background: "#5C92F7",
+                color: "#fff",
+                border: "none",
+                borderRadius: "10px",
+                cursor: "pointer",
+              }}
+            >
+              Logout
+            </button>
           </div>
           <div className="logoutContainer" onClick={logoutHandler}>
             <h2 className="logoutText">Logout</h2>
@@ -159,7 +173,8 @@ function Admin() {
               >
                 <button
                   className="addStudent"
-                  onClick={() => navigate("/add-student")}
+                  onClick={AddStudentHandler}
+                  // onClick={() => navigate("/add-student")}
                 >
                   <AddCircleRounded style={{ fontSize: "25px" }} />
                   <span style={{ fontSize: "20px" }}>Add Student</span>
@@ -180,12 +195,11 @@ function Admin() {
                 checkboxSelection
               />
                
-              
             </div>
           </div>
         </div>
+        <ToastContainer />
       </div>
-      <ToastContainer />
     </>
   );
 }

@@ -5,6 +5,8 @@ import { TextField, Container, Button } from "@mui/material";
 import { ArrowLeft } from "@mui/icons-material";
 import axios from "axios";
 import {useNavigate} from 'react-router-dom'
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
 
 
 const Addstudent = () => {
@@ -19,7 +21,18 @@ const Addstudent = () => {
     const navigate = useNavigate()
     
     const addHanlder =  () => {
-    navigate('/admin-panel')
+
+      toast.success("Add user  Successful", {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        theme: "colored",
+      });
+      setTimeout(() => navigate("/admin-panel"), 1500);
+    // navigate('/admin-panel')
+
     // try {
     //   const obj = {
     //     firstname,
@@ -148,6 +161,7 @@ const Addstudent = () => {
           Add Student
         </Button> */}
       </form>
+      <ToastContainer />
     </Container>
   );
 };

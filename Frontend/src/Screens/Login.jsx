@@ -1,14 +1,28 @@
 import React from "react";
 import Home from "./Admin/Admin.jsx";
-import { NavLink , useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
+import { toast, ToastContainer } from "react-toastify";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Login() {
   const navigate = useNavigate();
 
   const LoginHandler = (e) => {
-    e.preventDefault()
-    navigate("/admin-panel");
+    e.preventDefault();
+
+    console.log("hogaya");
+    // navigate('/login')
+    toast.success("Login Successful", {
+      position: "top-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      theme: "colored",
+    });
+    setTimeout(() => navigate("/admin-panel"), 1500);
   };
+  navigate("/admin-panel");
   return (
     <div className="relative flex items-top justify-center min-h-[700px] bg-white sm:items-center sm:pt-0">
       <div className="max-w-6xl mx-auto sm:px-6 lg:px-8">
@@ -98,7 +112,7 @@ export default function Login() {
               </div>
             </div>
 
-            <form className="p-6 flex flex-col justify-center" >
+            <form className="p-6 flex flex-col justify-center">
               <div className="flex flex-col">
                 <label htmlFor="name" className="hidden">
                   Full Name
@@ -139,18 +153,19 @@ export default function Login() {
               </div>
 
               <a href="/admin-pannel">
-              <button
-                type="submit"
-                className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 transition ease-in-out duration-300"
-                onClick={LoginHandler}
+                <button
+                  type="submit"
+                  className="md:w-32 bg-orange-700 hover:bg-blue-dark text-white font-bold py-3 px-6 rounded-lg mt-3 hover:bg-orange-600 transition ease-in-out duration-300"
+                  onClick={LoginHandler}
                 >
-                Submit
-              </button>
-                </a>
+                  Submit
+                </button>
+              </a>
             </form>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 }
